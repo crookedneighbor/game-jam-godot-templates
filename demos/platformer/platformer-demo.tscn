@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://166akeh7k681"]
+
+[ext_resource type="PackedScene" uid="uid://br1n1dk6xj756" path="res://demos/platformer/player/demo_platformer_player.tscn" id="1_ber5h"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yuy2b"]
+
+[node name="PlatformerDemo" type="Node2D" unique_id=692586753]
+
+[node name="DemoPlatformerPlayer" parent="." unique_id=1356916081 instance=ExtResource("1_ber5h")]
+position = Vector2(44, 588)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1577540668]
+position = Vector2(4, 644)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1983393177]
+shape = SubResource("WorldBoundaryShape2D_yuy2b")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=61448045]
+offset_left = -232.0
+offset_right = 343.0
+offset_bottom = 40.0

@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://br1n1dk6xj756"]
+
+[ext_resource type="PackedScene" uid="uid://dwyvu0dh5vy74" path="res://controllable-player/platformer/platformer_player.tscn" id="1_3c27f"]
+[ext_resource type="Texture2D" uid="uid://cpi7c3k17m70r" path="res://demos/platformer/player/player.png" id="2_sslna"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ber5h"]
+radius = 5.0
+height = 14.0
+
+[sub_resource type="Animation" id="Animation_sslna"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_kg23u"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_a867m"]
+resource_name = "walk"
+length = 0.5326
+loop_mode = 1
+step = 0.0666
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666, 0.1332, 0.19980001, 0.2664, 0.333, 0.39960003, 0.46620002),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a867m"]
+_data = {
+&"RESET": SubResource("Animation_sslna"),
+&"idle": SubResource("Animation_kg23u"),
+&"walk": SubResource("Animation_a867m")
+}
+
+[node name="DemoPlatformerPlayer" unique_id=1356916081 instance=ExtResource("1_3c27f")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=684571704]
+texture = ExtResource("2_sslna")
+offset = Vector2(0, -8)
+hframes = 11
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1628557316]
+position = Vector2(0, -9)
+shape = SubResource("CapsuleShape2D_ber5h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2" unique_id=745627048]
+libraries/ = SubResource("AnimationLibrary_a867m")
+autoplay = &"idle"
