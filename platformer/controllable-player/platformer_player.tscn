@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://dwyvu0dh5vy74"]
 
-[ext_resource type="Texture2D" uid="uid://b2w4k0o30anlo" path="res://icon.svg" id="1_33uo1"]
-[ext_resource type="Script" uid="uid://dhj1pmtqvc4ei" path="res://controllable-player/platformer/platformer_player.gd" id="1_av1qn"]
+[ext_resource type="Script" uid="uid://dhj1pmtqvc4ei" path="res://platformer/controllable-player/platformer_player.gd" id="1_ihyw1"]
+[ext_resource type="Texture2D" uid="uid://b2w4k0o30anlo" path="res://icon.svg" id="2_3m7td"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yuy2b"]
 size = Vector2(126, 128)
 
 [node name="PlatformerPlayer" type="CharacterBody2D" unique_id=1356916081]
 collision_layer = 2
-script = ExtResource("1_av1qn")
+script = ExtResource("1_ihyw1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=684571704]
-texture = ExtResource("1_33uo1")
+texture = ExtResource("2_3m7td")
 offset = Vector2(0, -48)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1628557316]

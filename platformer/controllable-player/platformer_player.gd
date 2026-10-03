@@ -44,12 +44,14 @@ func _handle_movement(_delta: float) -> void:
 func _update_animation(_delta: float) -> void:
 	sprite.flip_h = last_direction == -1.0
 
-	play_animation(current_state)
+	#play_animation(current_state)
 
 func _update_state(new_state: String) -> void:
 	if new_state == current_state:
 		return
+	
 	current_state = new_state
+	play_animation(current_state)
 
 func play_animation(_name: String) -> void:
 	pass
