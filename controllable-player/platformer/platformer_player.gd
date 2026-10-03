@@ -1,17 +1,12 @@
-extends CharacterBody2D
+class_name PlatformerPlayer extends CharacterBody2D
 
 const SPEED: float = 300.0
 const STOP_FRICTION: float = 10.0
 const JUMP_VELOCITY: float = -400.0
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 
 var last_direction := 0.0
-
-func _ready() -> void:
-	if !animation_player:
-		print("Missing animation player :(")
 
 func _physics_process(delta: float) -> void:
 	_apply_gravity(delta)
@@ -43,7 +38,9 @@ func _update_animation(_delta: float) -> void:
 	sprite.flip_h = last_direction == -1.0
 
 	if velocity.x != 0:
-		animation_player.play("walk")
+		play_animation("walk")
 	else:
-		animation_player.play("idle")
-	
+		play_animation("idle")
+
+func play_animation(_name: String) -> void:
+	pass
