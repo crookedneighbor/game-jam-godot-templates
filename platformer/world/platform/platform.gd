@@ -17,10 +17,10 @@ func _update_visuals() -> void:
 	if !middle or !left_side or !right_side or !collision_shape:
 		return
 
-	var full_size :=  16 * middle_size
-	left_side.position.x = -1 * full_size / 2 - 8
-	right_side.position.x = full_size / 2 + 8
+	var full_size: int=  16 * middle_size
+	var side_size: int = int(full_size / 2)
+	left_side.position.x = -1 * side_size - 8
+	right_side.position.x = side_size + 8
 	middle.position.x = -8 * middle_size
 	middle.size.x = full_size
 	collision_shape.shape.size.x = full_size + 32
-	#print(collision_shape.shape.extents.x)
