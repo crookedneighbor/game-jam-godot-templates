@@ -1,40 +1,29 @@
 [gd_scene format=3 uid="uid://166akeh7k681"]
 
 [ext_resource type="PackedScene" uid="uid://br1n1dk6xj756" path="res://demos/platformer/player/demo_platformer_player.tscn" id="1_ber5h"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yuy2b"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kg23u"]
-size = Vector2(102, 17)
+[ext_resource type="PackedScene" uid="uid://bfy2co1snoi4i" path="res://platformer/world/platform/platform.tscn" id="2_115k3"]
 
 [node name="PlatformerDemo" type="Node2D" unique_id=692586753]
 
 [node name="DemoPlatformerPlayer" parent="." unique_id=1356916081 instance=ExtResource("1_ber5h")]
 position = Vector2(44, 588)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1577540668]
-position = Vector2(4, 644)
-collision_mask = 0
+[node name="Ground" parent="." unique_id=1042417849 instance=ExtResource("2_115k3")]
+position = Vector2(44, 650)
+middle_size = 50
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1983393177]
-shape = SubResource("WorldBoundaryShape2D_yuy2b")
+[node name="Platforms" type="Node" parent="." unique_id=1453132694]
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=61448045]
-offset_left = -233.0
-offset_top = 2.0
-offset_right = 342.0
-offset_bottom = 42.0
+[node name="Platform" parent="Platforms" unique_id=191924781 instance=ExtResource("2_115k3")]
+position = Vector2(-72, 608)
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=572878189]
-position = Vector2(86, 588)
-collision_mask = 0
+[node name="Platform2" parent="Platforms" unique_id=1616698367 instance=ExtResource("2_115k3")]
+position = Vector2(96, 608)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1071023152]
-position = Vector2(26, 10.5)
-shape = SubResource("RectangleShape2D_kg23u")
+[node name="Platform3" parent="Platforms" unique_id=1955920121 instance=ExtResource("2_115k3")]
+position = Vector2(168, 568)
+middle_size = 3
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D2" unique_id=1807011926]
-offset_left = -26.0
-offset_top = 5.0
-offset_right = 76.0
-offset_bottom = 22.0
+[node name="Platform4" parent="Platforms" unique_id=925866881 instance=ExtResource("2_115k3")]
+position = Vector2(264, 520)
+middle_size = 3

@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bfy2co1snoi4i"]
+
+[ext_resource type="Script" uid="uid://cdqrtb2sk2fvy" path="res://platformer/world/platform/platform.gd" id="1_hvylj"]
+[ext_resource type="Texture2D" uid="uid://cujls5ist4qjr" path="res://platformer/world/platform/platform.png" id="1_l757g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuy2b"]
+atlas = ExtResource("1_l757g")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yuy2b"]
+resource_local_to_scene = true
+size = Vector2(48, 16)
+
+[node name="Platform" type="AnimatableBody2D" unique_id=1042417849]
+collision_mask = 0
+script = ExtResource("1_hvylj")
+
+[node name="LeftSide" type="Sprite2D" parent="." unique_id=1881036755]
+position = Vector2(-16, 0)
+texture = ExtResource("1_l757g")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Middle" type="TextureRect" parent="." unique_id=1908382195]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+texture = SubResource("AtlasTexture_yuy2b")
+stretch_mode = 1
+
+[node name="RightSide" type="Sprite2D" parent="." unique_id=1145330104]
+position = Vector2(16, 0)
+texture = ExtResource("1_l757g")
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1211551371]
+shape = SubResource("RectangleShape2D_yuy2b")
