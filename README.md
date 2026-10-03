@@ -15,8 +15,24 @@ These are the built-in assumptions for template. Feel free to change these assum
 
 ## Pre-made Scenes
 
-* TODO
+### Platformers
 
-## Pre-made Utility Scripts
+#### [Player](./platformer/controllable-player/)
 
-* TODO
+The script by default has no texture set on the Sprite2D and no actual animations. See [this demo](demos/platformer/player) for examples for how to update the base script for your use case.
+
+The following example adds an AnimationPlayer node and then uses that to play the animations.
+
+```
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+func play_animation(anim_name: String) -> void:
+  animation_player.play(anim_name)
+```
+
+For this to work properly, the animation_player must have the following animations set up:
+
+* idle
+* walk
+* jump
+* fall
