@@ -1,6 +1,7 @@
 class_name PlatformerPlayer extends CharacterBody2D
 
 const SPEED: float = 300.0
+const ACCELERATION_FRICTION: float = 10.0
 const STOP_FRICTION: float = 20.0
 const JUMP_VELOCITY: float = -400.0
 
@@ -33,7 +34,7 @@ func _handle_movement(_delta: float) -> void:
 	var direction := Input.get_axis("left", "right")
 	if direction:
 		last_direction = direction
-		velocity.x = direction * SPEED
+		velocity.x = move_toward(velocity.x, direction * SPEED, ACCELERATION_FRICTION)
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, STOP_FRICTION)
 	
