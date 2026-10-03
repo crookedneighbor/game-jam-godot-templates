@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://166akeh7k681"]
 
 [ext_resource type="PackedScene" uid="uid://br1n1dk6xj756" path="res://demos/platformer/player/demo_platformer_player.tscn" id="1_ber5h"]
+[ext_resource type="Script" uid="uid://l8072mra57t0" path="res://demos/platformer/platformer_demo.gd" id="1_dcf47"]
 [ext_resource type="PackedScene" uid="uid://ovgbkk88h075" path="res://demos/platformer/world/platform/platform.tscn" id="2_115k3"]
+[ext_resource type="PackedScene" uid="uid://fehhe7wx3137" path="res://platformer/world/killzone/killzone.tscn" id="3_2r4fm"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yuy2b"]
 
 [node name="PlatformerDemo" type="Node2D" unique_id=692586753]
+script = ExtResource("1_dcf47")
 
 [node name="DemoPlatformerPlayer" parent="." unique_id=1356916081 instance=ExtResource("1_ber5h")]
 position = Vector2(0, -176)
@@ -34,3 +39,11 @@ middle_size = 2
 [node name="Platform6" parent="Platforms" unique_id=450312395 instance=ExtResource("2_115k3")]
 position = Vector2(-256, -152)
 middle_size = 2
+
+[node name="Killzone" parent="Platforms" unique_id=808597476 instance=ExtResource("3_2r4fm")]
+position = Vector2(0, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Killzone" unique_id=1668269828]
+shape = SubResource("WorldBoundaryShape2D_yuy2b")
+
+[connection signal="killed" from="Platforms/Killzone" to="." method="_on_killed"]
