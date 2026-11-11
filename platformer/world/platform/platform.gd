@@ -23,4 +23,5 @@ func _update_visuals() -> void:
 	right_side.position.x = side_size + 8
 	middle.position.x = -8 * middle_size
 	middle.size.x = full_size
-	collision_shape.shape.size.x = full_size + 32
+	if collision_shape.shape:
+		collision_shape.shape.size.x = full_size + 32
