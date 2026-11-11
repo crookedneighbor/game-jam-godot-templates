@@ -3,57 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://br1n1dk6xj756" path="res://demos/platformer/player/demo_platformer_player.tscn" id="1_ber5h"]
 [ext_resource type="Script" uid="uid://l8072mra57t0" path="res://demos/platformer/platformer_demo.gd" id="1_dcf47"]
 [ext_resource type="PackedScene" uid="uid://ovgbkk88h075" path="res://demos/platformer/world/platform/platform.tscn" id="2_115k3"]
-[ext_resource type="PackedScene" uid="uid://ckob6d0slswfs" path="res://backgrounds/parallax_background/parallax_background.tscn" id="2_kx8dg"]
+[ext_resource type="PackedScene" uid="uid://c43yq28y1prr6" path="res://demos/platformer/world/background.tscn" id="2_d4vag"]
 [ext_resource type="PackedScene" uid="uid://fehhe7wx3137" path="res://platformer/world/killzone/killzone.tscn" id="3_2r4fm"]
-[ext_resource type="Texture2D" uid="uid://c7y2a3i73i5tm" path="res://demos/platformer/backgrounds/background-clouds.png" id="3_svq5d"]
-[ext_resource type="Texture2D" uid="uid://c2khyxv7lg3co" path="res://demos/platformer/backgrounds/background-mountains.png" id="4_ksv15"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yuy2b"]
 
 [node name="PlatformerDemo" type="Node2D" unique_id=692586753]
 script = ExtResource("1_dcf47")
 
-[node name="Background" type="Node2D" parent="." unique_id=1301491136]
+[node name="Background" parent="." unique_id=518906421 instance=ExtResource("2_d4vag")]
 position = Vector2(0, -80)
-
-[node name="Parallax2D" type="Parallax2D" parent="Background" unique_id=1840830402]
-scroll_offset = Vector2(0, -192)
-repeat_size = Vector2(640, 320)
-repeat_times = 3
-
-[node name="ColorRect" type="ColorRect" parent="Background/Parallax2D" unique_id=705133558]
-custom_minimum_size = Vector2(640, 320)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_right = 640.0
-offset_bottom = 320.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0.68115, 0.68114996, 1)
-
-[node name="Parallax2D2" type="Parallax2D" parent="Background" unique_id=599194571]
-scroll_scale = Vector2(0.2, 1)
-scroll_offset = Vector2(0, -16)
-repeat_size = Vector2(640, 0)
-repeat_times = 3
-
-[node name="Clouds" type="Sprite2D" parent="Background/Parallax2D2" unique_id=1638404679]
-texture = ExtResource("3_svq5d")
-
-[node name="Parallax2D3" type="Parallax2D" parent="Background" unique_id=627756267]
-scroll_scale = Vector2(0.3, 1)
-scroll_offset = Vector2(0, -88)
-repeat_size = Vector2(640, 0)
-repeat_times = 3
-
-[node name="Mountains" type="Sprite2D" parent="Background/Parallax2D3" unique_id=96771355]
-texture = ExtResource("4_ksv15")
-
-[node name="ParallaxBackground" parent="." unique_id=1378194173 instance=ExtResource("2_kx8dg")]
-visible = false
 
 [node name="DemoPlatformerPlayer" parent="." unique_id=1356916081 instance=ExtResource("1_ber5h")]
 position = Vector2(0, -176)
@@ -62,7 +21,7 @@ position = Vector2(0, -176)
 middle_size = 50
 
 [node name="Ground2" parent="." unique_id=139977872 instance=ExtResource("2_115k3")]
-position = Vector2(888, 0)
+position = Vector2(968, 0)
 middle_size = 50
 
 [node name="Platforms" type="Node" parent="." unique_id=1453132694]
@@ -87,6 +46,18 @@ middle_size = 2
 
 [node name="Platform6" parent="Platforms" unique_id=450312395 instance=ExtResource("2_115k3")]
 position = Vector2(-256, -152)
+middle_size = 2
+
+[node name="Platform7" parent="Platforms" unique_id=2129056938 instance=ExtResource("2_115k3")]
+position = Vector2(472, -152)
+middle_size = 2
+
+[node name="Platform9" parent="Platforms" unique_id=1773241290 instance=ExtResource("2_115k3")]
+position = Vector2(584, -208)
+middle_size = 2
+
+[node name="Platform8" parent="Platforms" unique_id=1328524717 instance=ExtResource("2_115k3")]
+position = Vector2(352, -200)
 middle_size = 2
 
 [node name="Killzone" parent="Platforms" unique_id=808597476 instance=ExtResource("3_2r4fm")]
