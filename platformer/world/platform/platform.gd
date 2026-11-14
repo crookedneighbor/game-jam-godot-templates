@@ -17,7 +17,7 @@ func _update_visuals() -> void:
 	if !middle or !left_side or !right_side or !collision_shape:
 		return
 
-	var full_size: int=  16 * middle_size
+	var full_size: float =  16 * middle_size
 	var side_size: int = int(full_size / 2)
 	left_side.position.x = -1 * side_size - 8
 	right_side.position.x = side_size + 8
