@@ -22,6 +22,45 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5nrds"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [13, 17]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_87ixg"]
 resource_name = "fall"
@@ -91,6 +130,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a867m"]
 _data = {
 &"RESET": SubResource("Animation_sslna"),
+&"death": SubResource("Animation_5nrds"),
 &"fall": SubResource("Animation_87ixg"),
 &"idle": SubResource("Animation_kg23u"),
 &"jump": SubResource("Animation_i6b46"),
@@ -103,7 +143,7 @@ script = ExtResource("2_kg23u")
 [node name="Sprite2D" parent="." index="0" unique_id=684571704]
 texture = ExtResource("2_sslna")
 offset = Vector2(0, -8)
-hframes = 13
+hframes = 18
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=1628557316]
 position = Vector2(0, -8)

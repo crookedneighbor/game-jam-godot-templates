@@ -1,5 +1,7 @@
 class_name PlatformerPlayer extends CharacterBody2D
 
+signal died
+
 const SPEED: float = 300.0
 const ACCELERATION_FRICTION: float = 10.0
 const STOP_FRICTION: float = 20.0
@@ -23,14 +25,21 @@ func _apply_gravity(delta: float) -> void:
 		return
 
 	velocity += get_gravity() * delta
+	if current_state == "death":
+		return
 	if velocity.y > 0: _update_state("fall")
 
 func _handle_jump(_delta: float) -> void:
+	if current_state == "death":
+		return
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		_update_state("jump")
 
 func _handle_movement(_delta: float) -> void:
+	if current_state == "death":
+		return
+
 	var direction := Input.get_axis("left", "right")
 	if direction:
 		last_direction = direction
@@ -51,6 +60,10 @@ func _update_state(new_state: String) -> void:
 		return
 	
 	current_state = new_state
+
+func death() -> void:
+	_update_state("death")
+	died.emit()
 
 func play_animation(_name: String) -> void:
 	pass

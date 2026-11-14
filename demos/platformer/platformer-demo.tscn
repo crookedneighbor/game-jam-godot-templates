@@ -61,9 +61,7 @@ position = Vector2(376, -200)
 middle_size = 4
 
 [node name="Killzone" parent="Platforms" unique_id=808597476 instance=ExtResource("3_2r4fm")]
-position = Vector2(0, 64)
+position = Vector2(0, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Killzone" unique_id=1668269828]
 shape = SubResource("WorldBoundaryShape2D_yuy2b")
-
-[connection signal="killed" from="Platforms/Killzone" to="." method="_on_killed"]
