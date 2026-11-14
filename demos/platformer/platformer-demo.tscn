@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ovgbkk88h075" path="res://demos/platformer/world/platform/platform.tscn" id="2_115k3"]
 [ext_resource type="PackedScene" uid="uid://c43yq28y1prr6" path="res://demos/platformer/world/background.tscn" id="2_d4vag"]
 [ext_resource type="PackedScene" uid="uid://fehhe7wx3137" path="res://platformer/world/killzone/killzone.tscn" id="3_2r4fm"]
+[ext_resource type="PackedScene" uid="uid://2lq8ij2r4jol" path="res://demos/platformer/world/spikes/spikes.tscn" id="6_ml3tt"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yuy2b"]
 
@@ -65,3 +66,26 @@ position = Vector2(0, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Killzone" unique_id=1668269828]
 shape = SubResource("WorldBoundaryShape2D_yuy2b")
+
+[node name="Spikes" type="Node2D" parent="." unique_id=1631666967]
+
+[node name="Spikes" parent="Spikes" unique_id=90911366 instance=ExtResource("6_ml3tt")]
+position = Vector2(160, -16)
+
+[node name="Spikes2" parent="Spikes" unique_id=1103895434 instance=ExtResource("6_ml3tt")]
+position = Vector2(176, -16)
+
+[node name="Spikes3" parent="Spikes" unique_id=298508326 instance=ExtResource("6_ml3tt")]
+position = Vector2(208, -16)
+
+[node name="Spikes4" parent="Spikes" unique_id=1476664889 instance=ExtResource("6_ml3tt")]
+position = Vector2(176, -112)
+
+[node name="Spikes5" parent="Spikes" unique_id=1995196194 instance=ExtResource("6_ml3tt")]
+position = Vector2(-328, -16)
+
+[node name="Spikes6" parent="Spikes" unique_id=1732260670 instance=ExtResource("6_ml3tt")]
+position = Vector2(-312, -16)
+
+[node name="Spikes7" parent="Spikes" unique_id=1224297670 instance=ExtResource("6_ml3tt")]
+position = Vector2(-344, -16)

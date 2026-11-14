@@ -21,7 +21,7 @@ func death() -> void:
 	velocity.x *= -0.25
 	collision_shape.queue_free()
 	var tween := create_tween()
-	tween.tween_property(self, "rotation", 180, 10)
+	tween.tween_property(self, "rotation", 80, 10)
 	await animation_player.animation_finished
 	died.emit()
 	
