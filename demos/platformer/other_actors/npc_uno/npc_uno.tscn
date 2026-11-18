@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://cgt2vuhfvavlm"]
+
+[ext_resource type="Texture2D" uid="uid://dg1qlbh86q6fw" path="res://demos/platformer/other_actors/npc_uno/uno.png" id="1_u45rt"]
+[ext_resource type="Script" uid="uid://bardyv55noco5" path="res://demos/platformer/other_actors/npc_uno/npc_uno.gd" id="1_y82t2"]
+[ext_resource type="PackedScene" uid="uid://ddq2s74am0s4s" path="res://utils/state_machine/state_machine.tscn" id="3_ndu15"]
+[ext_resource type="PackedScene" uid="uid://ixfq02ygddfr" path="res://demos/platformer/other_actors/npc_states/npc_platformer_brain_state.tscn" id="4_jp66k"]
+[ext_resource type="PackedScene" uid="uid://cp3luyqrdrj8c" path="res://demos/platformer/other_actors/npc_states/npc_platformer_idle_state.tscn" id="4_rgmiw"]
+[ext_resource type="PackedScene" uid="uid://d0y3a8x0yamny" path="res://demos/platformer/other_actors/npc_states/npc_platformer_wander_state.tscn" id="4_us73f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yuy2b"]
+radius = 8.0
+height = 16.0
+
+[sub_resource type="Animation" id="Animation_npqwd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Direction/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ndu15"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Direction/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 2]
+}
+
+[sub_resource type="Animation" id="Animation_rgmiw"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Direction/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [36, 44]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_us73f"]
+_data = {
+&"RESET": SubResource("Animation_npqwd"),
+&"idle": SubResource("Animation_ndu15"),
+&"walk": SubResource("Animation_rgmiw")
+}
+
+[node name="NpcUno" type="CharacterBody2D" unique_id=1944808983]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_y82t2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1830892920]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_yuy2b")
+
+[node name="Direction" type="Node2D" parent="." unique_id=1849252307]
+
+[node name="Sprite2D" type="Sprite2D" parent="Direction" unique_id=735541575]
+position = Vector2(0, -8)
+texture = ExtResource("1_u45rt")
+hframes = 9
+vframes = 13
+
+[node name="GroundDetector" type="RayCast2D" parent="Direction" unique_id=1265186383]
+position = Vector2(-8, -8)
+target_position = Vector2(0, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1440425455]
+libraries/ = SubResource("AnimationLibrary_us73f")
+autoplay = &"idle"
+
+[node name="StateMachine" parent="." unique_id=1234999421 node_paths=PackedStringArray("actor") instance=ExtResource("3_ndu15")]
+actor = NodePath("..")
+
+[node name="NpcPlatformerBrainState" parent="StateMachine" unique_id=1432027535 instance=ExtResource("4_jp66k")]
+
+[node name="NpcPlatformerIdleState" parent="StateMachine" unique_id=972240409 instance=ExtResource("4_rgmiw")]
+
+[node name="NpcPlatformerWanderState" parent="StateMachine" unique_id=58132859 instance=ExtResource("4_us73f")]

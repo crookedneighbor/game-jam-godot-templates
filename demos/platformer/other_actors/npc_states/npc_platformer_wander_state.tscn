@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d0y3a8x0yamny"]
+
+[ext_resource type="Script" uid="uid://bj8exkxxiriu6" path="res://demos/platformer/other_actors/npc_states/npc_platformer_wander_state.gd" id="1_s7i2v"]
+
+[node name="NpcPlatformerWanderState" type="Node" unique_id=1432027535]
+script = ExtResource("1_s7i2v")

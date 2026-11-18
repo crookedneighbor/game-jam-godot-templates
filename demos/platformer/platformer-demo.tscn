@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c43yq28y1prr6" path="res://demos/platformer/world/background.tscn" id="2_d4vag"]
 [ext_resource type="PackedScene" uid="uid://fehhe7wx3137" path="res://platformer/world/killzone/killzone.tscn" id="3_2r4fm"]
 [ext_resource type="PackedScene" uid="uid://2lq8ij2r4jol" path="res://demos/platformer/world/spikes/spikes.tscn" id="6_ml3tt"]
+[ext_resource type="PackedScene" uid="uid://cgt2vuhfvavlm" path="res://demos/platformer/other_actors/npc_uno/npc_uno.tscn" id="7_kx8dg"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yuy2b"]
 
@@ -89,3 +90,8 @@ position = Vector2(-312, -16)
 
 [node name="Spikes7" parent="Spikes" unique_id=1224297670 instance=ExtResource("6_ml3tt")]
 position = Vector2(-344, -16)
+
+[node name="NPCs" type="Node2D" parent="." unique_id=731439594]
+
+[node name="NpcUno" parent="." unique_id=1944808983 instance=ExtResource("7_kx8dg")]
+position = Vector2(96, -64)
